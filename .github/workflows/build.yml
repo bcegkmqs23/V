@@ -93,7 +93,7 @@ jobs:
     - name: Substitute assets
       run: |
         cp -r assets/android/* V2rayNG/app/src/main/
-        cp assets/build.gradle v2rayNG/V2rayNG/app/build.gradle
+        cp assets/build.gradle v2rayNG/app/build.gradle
 
     - name: Build APK
       run: |
