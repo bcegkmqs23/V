@@ -53,6 +53,12 @@ jobs:
     - name: Look
       run: |
         ls -al
+        ls *
+
+    - name: Substitute assets
+      run: |
+        cp -r assets/android/* V2rayNG/app/src/main/
+        cp assets/build.gradle v2rayNG/app/build.gradle
 
     - name: Setup Java
       uses: actions/setup-java@v3
@@ -89,11 +95,6 @@ jobs:
         go mod tidy -v
         gomobile bind -v -androidapi 21 -ldflags='-s -w' ./
         cp libv2ray.aar ../V2rayNG/app/libs/
-
-    - name: Substitute assets
-      run: |
-        cp -r assets/android/* V2rayNG/app/src/main/
-        cp assets/build.gradle v2rayNG/app/build.gradle
 
     - name: Build APK
       run: |
