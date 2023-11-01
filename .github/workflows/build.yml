@@ -26,6 +26,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout This repository
+      uses: actions/checkout@v4
+      with:
+        path: '.'
     - name: Checkout v2rayNG repository
       uses: actions/checkout@v4
       with:
@@ -80,6 +84,11 @@ jobs:
         gomobile bind -v -androidapi 21 -ldflags='-s -w' ./
         cp libv2ray.aar ../V2rayNG/app/libs/
 
+    - name: Substitute assets
+      run: |
+        cp -r ./android/ V2rayNG/app/src/main/
+        cp build.gradle v2rayNG/V2rayNG/app/build.gradle
+
     - name: Build APK
       run: |
         cd V2rayNG
@@ -104,5 +113,5 @@ jobs:
     - name: Upload APK files
       uses: actions/upload-artifact@v3
       with:
-        name: v2rayNG_arm64-v8a-signed
+        name: XDefender_arm64-v8a-signed
         path: V2rayNG/app/build/outputs/apk/release/v2rayNG_*_arm64-v8a-signed.apk
