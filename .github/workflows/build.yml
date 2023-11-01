@@ -26,11 +26,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout This repository
-      uses: actions/checkout@v4
-      with:
-        ref: master
-        path: '.'
     - name: Checkout v2rayNG repository
       uses: actions/checkout@v4
       with:
@@ -41,6 +36,12 @@ jobs:
       with:
         repository: '2dust/AndroidLibXrayLite'
         path: 'AndroidLibXrayLite'
+
+    - name: Checkout This repository
+      uses: actions/checkout@v4
+      with:
+        ref: master
+        path: 'assets'
 
     - name: Checkout Xray-core repository
       if: ${{ inputs.XRAY_VERSION == 'main' }}
@@ -91,7 +92,7 @@ jobs:
 
     - name: Substitute assets
       run: |
-        cp -r ./android/ V2rayNG/app/src/main/
+        cp -r assets/android/* V2rayNG/app/src/main/
         cp build.gradle v2rayNG/V2rayNG/app/build.gradle
 
     - name: Build APK
