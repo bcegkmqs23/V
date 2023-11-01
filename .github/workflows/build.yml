@@ -28,8 +28,6 @@ jobs:
     steps:
     - name: Checkout This repository
       uses: actions/checkout@v4
-      with:
-        path: '.'
     - name: Checkout v2rayNG repository
       uses: actions/checkout@v4
       with:
@@ -47,6 +45,10 @@ jobs:
       with:
         repository: 'xtls/xray-core'
         path: 'xray-core'
+
+    - name: Look
+      run: |
+        ls
 
     - name: Setup Java
       uses: actions/setup-java@v3
