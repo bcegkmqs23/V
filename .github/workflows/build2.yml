@@ -27,6 +27,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         path: '.'
+
     - name: Checkout v2rayNG repository
       uses: actions/checkout@v4
       with:
@@ -44,6 +45,14 @@ jobs:
         repository: 'xtls/xray-core'
         path: 'xray-core'
         fetch-depth: '0'
+
+    - name: Decode Keystore
+      id: decode_keystore
+      uses: timheuer/base64-to-file@v1.2
+      with:
+        fileName: 'android_keystore.jks'
+        fileDir: 'V2rayNG/app/keystore/'
+        encodedString: ${{ secrets.SIGNING_KEY }}
 
     - name: Setup Java
       uses: actions/setup-java@v3
