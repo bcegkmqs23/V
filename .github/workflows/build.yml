@@ -61,6 +61,10 @@ jobs:
         cp assets/build.gradle V2rayNG/app/build.gradle
         cp assets/settings.gradle V2rayNG/settings.gradle
         cp assets/strings.xml V2rayNG/app/src/main/res/values/strings.xml
+        rm V2rayNG/app/src/main/res/drawable*/ic_stat_name_grey.png
+        cp /assets/android/res/drawable/ic_stat_name_grey.xml V2rayNG/app/src/main/res/drawable/
+        rm V2rayNG/app/src/main/res/drawable*/ic_stat_name_black.png
+        cp /assets/android/res/drawable/ic_stat_name_black.xml V2rayNG/app/src/main/res/drawable/
 
     - name: Decode Keystore
       id: decode_keystore
