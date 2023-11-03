@@ -130,4 +130,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: XDefender_arm64-v8a-signed
-        path: V2rayNG/app/build/outputs/apk/release/v2rayNG_*_arm64-v8a-signed.apk
+        path: V2rayNG/app/build/outputs/apk/release/XDefender_*_arm64-v8a-signed.apk
